@@ -1,0 +1,173 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ARUMO — Divine Output. Luxury devotional design system. */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --font-display: "Cinzel", serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-soft: var(--gold-soft);
+  --color-maroon: var(--maroon);
+  --color-saffron: var(--saffron);
+  --color-lotus: var(--lotus);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+
+  --shadow-divine: 0 20px 60px -20px color-mix(in oklab, var(--gold) 45%, transparent);
+  --shadow-glow: 0 0 40px color-mix(in oklab, var(--gold) 35%, transparent);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Surface tokens — dark luxury */
+  --background: oklch(0.14 0.012 50);
+  --foreground: oklch(0.96 0.018 85);
+  --card: oklch(0.18 0.014 50);
+  --card-foreground: oklch(0.96 0.018 85);
+  --popover: oklch(0.16 0.014 50);
+  --popover-foreground: oklch(0.96 0.018 85);
+
+  --primary: oklch(0.78 0.13 82); /* gold */
+  --primary-foreground: oklch(0.14 0.012 50);
+  --secondary: oklch(0.22 0.018 50);
+  --secondary-foreground: oklch(0.96 0.018 85);
+  --muted: oklch(0.22 0.012 50);
+  --muted-foreground: oklch(0.72 0.022 75);
+  --accent: oklch(0.35 0.11 25); /* maroon accent */
+  --accent-foreground: oklch(0.96 0.018 85);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.78 0.13 82 / 22%);
+  --input: oklch(0.78 0.13 82 / 18%);
+  --ring: oklch(0.78 0.13 82 / 60%);
+
+  /* Brand tokens */
+  --gold: oklch(0.78 0.13 82);          /* #D4AF37 */
+  --gold-deep: oklch(0.72 0.13 80);     /* #C9A227 */
+  --gold-soft: oklch(0.88 0.08 85);
+  --maroon: oklch(0.35 0.11 25);        /* #6B1F1F */
+  --saffron: oklch(0.75 0.17 55);       /* #FF9933 */
+  --lotus: oklch(0.78 0.09 0);          /* #D88AA7 */
+  --ivory: oklch(0.96 0.018 85);        /* #F8F4EA */
+  --ink: oklch(0.08 0.005 50);          /* #0B0B0B */
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklab, var(--gold) 18%, transparent), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, color-mix(in oklab, var(--maroon) 25%, transparent), transparent 60%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.02em; }
+  ::selection { background: color-mix(in oklab, var(--gold) 50%, transparent); color: var(--ink); }
+}
+
+/* Utilities */
+@utility text-gold-gradient {
+  background: linear-gradient(135deg, oklch(0.88 0.10 90), oklch(0.72 0.14 80) 50%, oklch(0.88 0.10 90));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gold-gradient {
+  background: linear-gradient(135deg, oklch(0.82 0.13 85), oklch(0.68 0.14 78));
+}
+
+@utility glass-card {
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  backdrop-filter: blur(14px);
+  border: 1px solid color-mix(in oklab, var(--gold) 22%, transparent);
+}
+
+@utility divine-glow {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--gold) 30%, transparent),
+    0 20px 60px -20px color-mix(in oklab, var(--gold) 35%, transparent);
+}
+
+@utility gold-border {
+  border: 1px solid color-mix(in oklab, var(--gold) 40%, transparent);
+}
+
+@utility ornament-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 70%, transparent), transparent);
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.72rem;
+  color: color-mix(in oklab, var(--gold) 85%, white);
+}
+
+@keyframes float-up {
+  0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(-10vh) translateX(40px) rotate(180deg); opacity: 0; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 30px color-mix(in oklab, var(--gold) 30%, transparent); }
+  50% { box-shadow: 0 0 60px color-mix(in oklab, var(--gold) 55%, transparent); }
+}
+@keyframes ray-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-float-up { animation: float-up 18s linear infinite; }
+.animate-pulse-glow { animation: pulse-glow 3.5s ease-in-out infinite; }
+.animate-ray-spin { animation: ray-spin 60s linear infinite; }
+
+.gold-shimmer {
+  background: linear-gradient(110deg, transparent 20%, color-mix(in oklab, var(--gold) 60%, transparent) 50%, transparent 80%);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
